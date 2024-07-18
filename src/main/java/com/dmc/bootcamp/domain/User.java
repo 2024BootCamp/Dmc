@@ -47,6 +47,10 @@ public class User {
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private List<HealthStatus> healthStatuses;
 
+
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+    private  List<RecommendLog> recommendLogs;
+
     @Builder
     public User(String userId,String userName,String password,Character gender,LocalDate birthday,String diseaseInfo,float height,float weight,String address){
         this.userId=userId;

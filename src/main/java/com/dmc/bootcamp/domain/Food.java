@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
@@ -38,4 +40,7 @@ public class Food{
 
     @Column(name = "sugar")
     private float sugar;
+
+    @ManyToMany(mappedBy = "foods")
+    private List<RecommendLog> recommendLogs;
 }
