@@ -3,8 +3,10 @@ package com.dmc.bootcamp.controller;
 import com.dmc.bootcamp.domain.AppUser;
 import com.dmc.bootcamp.dto.request.UserLoginRequest;
 import com.dmc.bootcamp.dto.request.UserRequest;
+import com.dmc.bootcamp.repository.TokenBlacklistRepository;
 import com.dmc.bootcamp.repository.UserRepository;
 import com.nimbusds.jose.jwk.source.ImmutableSecret;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,8 @@ public class AccountController {
 
 
     private final AuthenticationManager authenticationManager;
+
+    private final TokenBlacklistRepository tokenBlacklistRepository;
 
 
     //유저 정보 가저오기
@@ -141,6 +145,32 @@ public class AccountController {
 
 
     }
+
+
+    @PostMapping("/logout")
+    public ResponseEntity<Object> logout(HttpServletRequest request){
+        if (request == null) {
+            return ResponseEntity.badRequest().body("User is not authenticated");
+        }
+
+        String token = extractTokenFromAuthentication(request);
+
+        if (token != null) {
+            tokenBlacklistRepository.add(token);
+            return ResponseEntity.ok("Logged out successfully");
+        } else {
+            return ResponseEntity.badRequest().body("Invalid token");
+        }
+    }
+    private String extractTokenFromAuthentication(HttpServletRequest request) {
+        String bearerToken = request.getHeader("Authorization");
+        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
+            return bearerToken.substring(7);
+        }
+        return null;
+    }
+
+
 
 
 

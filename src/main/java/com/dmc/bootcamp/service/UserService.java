@@ -29,4 +29,6 @@ public class UserService {
         AppUser appUser = userRepository.findById(userId).orElseThrow(()-> new IllegalArgumentException("not found"+ userId));
         userRepository.delete(appUser);
     }
+
+
 }
