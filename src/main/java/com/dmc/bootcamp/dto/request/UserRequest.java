@@ -1,15 +1,17 @@
 package com.dmc.bootcamp.dto.request;
 
-import com.dmc.bootcamp.domain.User;
+import com.dmc.bootcamp.domain.AppUser;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 public class UserRequest {
     private String userId;
     private String password;
@@ -21,8 +23,8 @@ public class UserRequest {
     private float weight;
     private  String address;
 
-    public User toEntity(){
-        return User.builder()
+    public AppUser toEntity(){
+        return AppUser.builder()
                 .userId(userId)
                 .userName(userName)
                 .password(password)

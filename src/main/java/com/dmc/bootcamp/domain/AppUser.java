@@ -1,21 +1,17 @@
 package com.dmc.bootcamp.domain;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import lombok.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @Getter
+@Setter
 @Entity
 @Table(name = "user")
-public class User {
+public class AppUser {
     @Id
     @Column(name = "user_id")
     private String userId;
@@ -44,15 +40,18 @@ public class User {
     @Column(name = "address")
     private String address;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+    @Column(name = "role")
+    private String role;
+
+    @OneToMany(mappedBy = "appUser",fetch = FetchType.EAGER)
     private List<HealthStatus> healthStatuses;
 
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "appUser",fetch = FetchType.EAGER)
     private  List<RecommendLog> recommendLogs;
 
     @Builder
-    public User(String userId,String userName,String password,Character gender,LocalDate birthday,String diseaseInfo,float height,float weight,String address){
+    public AppUser(String userId, String userName, String password, Character gender, LocalDate birthday, String diseaseInfo, float height, float weight, String address){
         this.userId=userId;
         this.password=password;
         this.userName=userName;
@@ -64,5 +63,6 @@ public class User {
         this.address=address;
     }
 
-  
+
+
 }

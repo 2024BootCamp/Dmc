@@ -21,7 +21,7 @@ public class HealthStatusResponse {
         this.lowBlood=healthStatus.getLowBlood();
         this.emptySugar=healthStatus.getEmptySugar();
         this.fullSugar=healthStatus.getFullSugar();
-        this.userId=healthStatus.getUser().getUserId();
+        this.userId=healthStatus.getAppUser().getUserId();
         this.date=healthStatus.getStatusTime();
     }
 }

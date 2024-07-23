@@ -24,7 +24,7 @@ public class HealthStatus {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
     @JsonBackReference
-    private User user;
+    private AppUser appUser;
 
     @Column(name = "status_time")
     private LocalDateTime statusTime;
@@ -42,12 +42,12 @@ public class HealthStatus {
     private float fullSugar;
 
     @Builder
-    public HealthStatus(float highBlood,float lowBlood,float emptySugar,float fullSugar,User user){
+    public HealthStatus(float highBlood, float lowBlood, float emptySugar, float fullSugar, AppUser appUser){
         this.highBlood=highBlood;
         this.lowBlood=lowBlood;
         this.emptySugar=emptySugar;
         this.fullSugar=fullSugar;
-        this.user=user;
+        this.appUser = appUser;
     }
 
     @PrePersist

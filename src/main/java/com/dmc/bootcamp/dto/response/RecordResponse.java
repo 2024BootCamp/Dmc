@@ -14,7 +14,7 @@ public class RecordResponse {
         this.image=record.getImage();
         this.content=record.getContent();
         this.score=record.getScore();
-        this.userId=record.getUser().getUserId();
+        this.userId=record.getAppUser().getUserId();
     }
 
 }

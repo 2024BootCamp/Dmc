@@ -1,8 +1,12 @@
 package com.dmc.bootcamp.repository;
 
-import com.dmc.bootcamp.domain.User;
+import com.dmc.bootcamp.domain.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User,String> {
-    User findUserByUserId(String userId);
+public interface UserRepository extends JpaRepository<AppUser,String> {
+    AppUser findUserByUserId(String userId);
+    AppUser findByUserName(String userName);
+
+    AppUser findByUserId(String userId);
+
 }

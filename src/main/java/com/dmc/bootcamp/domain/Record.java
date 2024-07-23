@@ -35,18 +35,18 @@ public class Record {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
     @JsonBackReference
-    private User user;
+    private AppUser appUser;
 
 
     @Column(name = "score")
     private float score;
 
     @Builder
-    public Record(String image, String content,float score,User user){
+    public Record(String image, String content, float score, AppUser appUser){
         this.content=content;
         this.image=image;
         this.score=score;
-        this.user=user;
+        this.appUser = appUser;
     }
 
     @PrePersist

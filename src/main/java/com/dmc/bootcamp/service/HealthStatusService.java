@@ -1,7 +1,7 @@
 package com.dmc.bootcamp.service;
 
 import com.dmc.bootcamp.domain.HealthStatus;
-import com.dmc.bootcamp.domain.User;
+import com.dmc.bootcamp.domain.AppUser;
 import com.dmc.bootcamp.dto.request.HealthStatusRequest;
 import com.dmc.bootcamp.dto.request.UpdateHealthStatusRequest;
 import com.dmc.bootcamp.repository.HealthStatusRepository;
@@ -20,8 +20,8 @@ public class HealthStatusService {
 
     //건강 상태 기록 저장
     public HealthStatus save(HealthStatusRequest request){
-        User user= userRepository.findById(request.getUserId()).orElseThrow(()-> new IllegalArgumentException("not found"+request.getUserId()));
-       return healthStatusRepository.save(request.toEntity(user));
+        AppUser appUser = userRepository.findById(request.getUserId()).orElseThrow(()-> new IllegalArgumentException("not found"+request.getUserId()));
+       return healthStatusRepository.save(request.toEntity(appUser));
     }
 
     //사용자 건강 상태 기록 조회

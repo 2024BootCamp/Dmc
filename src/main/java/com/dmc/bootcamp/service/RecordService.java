@@ -1,6 +1,6 @@
 package com.dmc.bootcamp.service;
 
-import com.dmc.bootcamp.domain.User;
+import com.dmc.bootcamp.domain.AppUser;
 import com.dmc.bootcamp.domain.Record;
 import com.dmc.bootcamp.dto.request.RecordRequest;
 import com.dmc.bootcamp.dto.request.UpdateRecordRequest;
@@ -20,8 +20,8 @@ public class RecordService {
 
     //사용자 식사 기록 저장
     public Record save(RecordRequest request){
-        User user= userRepository.findById(request.getUserId()).orElseThrow(()->new IllegalArgumentException("not found"+ request.getUserId()));
-        return recordRepository.save(request.toEntity(user));
+        AppUser appUser = userRepository.findById(request.getUserId()).orElseThrow(()->new IllegalArgumentException("not found"+ request.getUserId()));
+        return recordRepository.save(request.toEntity(appUser));
     }
 
     // 사용자 식사 기록 조회

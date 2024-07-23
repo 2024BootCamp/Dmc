@@ -1,8 +1,7 @@
 package com.dmc.bootcamp.service;
 
-import com.dmc.bootcamp.domain.User;
+import com.dmc.bootcamp.domain.AppUser;
 import com.dmc.bootcamp.dto.request.UserRequest;
-import com.dmc.bootcamp.dto.response.UserResponse;
 import com.dmc.bootcamp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,20 +13,20 @@ import java.util.List;
 public class UserService {
     private final UserRepository userRepository;
 
-    public User save(UserRequest request){
+    public AppUser save(UserRequest request){
         return userRepository.save(request.toEntity());
     }
 
-    public List<User> getAllUser(){
+    public List<AppUser> getAllUser(){
         return userRepository.findAll();
     }
 
-    public User findById(String userId){
+    public AppUser findById(String userId){
         return userRepository.findById(userId).orElseThrow(()-> new IllegalArgumentException("not found"+userId));
     }
 
     public void  delete(String userId){
-        User user= userRepository.findById(userId).orElseThrow(()-> new IllegalArgumentException("not found"+ userId));
-        userRepository.delete(user);
+        AppUser appUser = userRepository.findById(userId).orElseThrow(()-> new IllegalArgumentException("not found"+ userId));
+        userRepository.delete(appUser);
     }
 }

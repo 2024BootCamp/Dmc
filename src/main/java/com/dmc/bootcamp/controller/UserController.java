@@ -1,6 +1,6 @@
 package com.dmc.bootcamp.controller;
 
-import com.dmc.bootcamp.domain.User;
+import com.dmc.bootcamp.domain.AppUser;
 import com.dmc.bootcamp.dto.request.UserRequest;
 import com.dmc.bootcamp.dto.response.UserResponse;
 import com.dmc.bootcamp.service.UserService;
@@ -18,10 +18,10 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/user")
-    public ResponseEntity<User> addUser(@RequestBody UserRequest request){
-        User savedUser= userService.save(request);
+    public ResponseEntity<AppUser> addUser(@RequestBody UserRequest request){
+        AppUser savedAppUser = userService.save(request);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedAppUser);
     }
 
     @GetMapping("/user")
@@ -32,8 +32,8 @@ public class UserController {
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<UserResponse> findUser(@PathVariable String userId){
-        User user= userService.findById(userId);
-        return ResponseEntity.ok().body(new UserResponse(user));
+        AppUser appUser = userService.findById(userId);
+        return ResponseEntity.ok().body(new UserResponse(appUser));
     }
 
     @DeleteMapping("/user/{userId}")

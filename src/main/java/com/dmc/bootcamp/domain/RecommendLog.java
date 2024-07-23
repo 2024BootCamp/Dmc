@@ -3,7 +3,6 @@ package com.dmc.bootcamp.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -31,5 +30,5 @@ public class RecommendLog {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
     @JsonBackReference
-    private User user;
+    private AppUser appUser;
 }
