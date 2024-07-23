@@ -42,6 +42,8 @@ public class AccountController {
 
     private final AuthenticationManager authenticationManager;
 
+
+    //유저 정보 가저오기
     @GetMapping("/profile")
     public ResponseEntity<Object> getProfile(Authentication authentication) {
         var response= new HashMap<String, Object>();
@@ -54,6 +56,8 @@ public class AccountController {
         return ResponseEntity.ok(response);
     }
 
+
+    //회원 가입
     @PostMapping("/register")
     public ResponseEntity<Object> register(@RequestBody @Valid UserRequest registerDto, BindingResult result) {
         if(result.hasErrors()) {
