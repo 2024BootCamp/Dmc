@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RecordRequest {
+    private String foodId; //food_id추가
     private String image;
     private String content;
     private  float score;
@@ -17,6 +18,7 @@ public class RecordRequest {
 
     public Record toEntity(AppUser appUser){
         return Record.builder()
+                .foodId(foodId)
                 .content(content)
                 .image(image)
                 .score(score)

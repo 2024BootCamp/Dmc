@@ -18,28 +18,36 @@ public class RecordService {
     private final RecordRepository recordRepository;
     private final UserRepository userRepository;
 
-    //사용자 식사 기록 저장
-    public Record save(RecordRequest request){
-        AppUser appUser = userRepository.findById(request.getUserId()).orElseThrow(()->new IllegalArgumentException("not found"+ request.getUserId()));
+    // 사용자 식사 기록 저장
+    public Record save(RecordRequest request) {
+        AppUser appUser = userRepository.findById(request.getUserId())
+                .orElseThrow(() -> new IllegalArgumentException("User not found: " + request.getUserId()));
         return recordRepository.save(request.toEntity(appUser));
     }
 
     // 사용자 식사 기록 조회
-    public List<Record> getAll(){
+    public List<Record> getAll() {
         return recordRepository.findAll();
     }
 
     // 사용자 식사 기록 삭제
-    public void delete(long id){
-        Record record= recordRepository.findById(id).orElseThrow(()->new IllegalArgumentException("not found"+id));
+    public void delete(long id) {
+        Record record = recordRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Record not found: " + id));
         recordRepository.delete(record);
     }
 
-    //사용자 식사 업데이트
+    // 사용자 식사 기록 업데이트
     @Transactional
-    public Record update(long id, UpdateRecordRequest request){
-        Record record= recordRepository.findById(id).orElseThrow(()->new IllegalArgumentException("not found"+id));
-        record.update(request.getImage(),request.getContent(),request.getScore());
-        return  record;
+    public Record update(long id, UpdateRecordRequest request) {
+        Record record = recordRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Record not found: " + id));
+        record.update(request.getImage(), request.getContent(), request.getScore());
+        return record;
+    }
+
+    // foodId로 기록 조회
+    public List<Record> getByFoodId(String foodId) {
+        return recordRepository.findByFoodId(foodId);
     }
 }

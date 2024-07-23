@@ -1,6 +1,5 @@
 package com.dmc.bootcamp.domain;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -21,13 +20,13 @@ public class Record {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long recordId;
 
+    private String foodId; // foodId 필드 추가
 
     @Column(name = "record_date")
     private LocalDateTime recordDate;
 
     @Column(name = "image")
     private String image;
-
 
     @Column(name = "content")
     private String content;
@@ -37,15 +36,15 @@ public class Record {
     @JsonBackReference
     private AppUser appUser;
 
-
     @Column(name = "score")
     private float score;
 
     @Builder
-    public Record(String image, String content, float score, AppUser appUser){
-        this.content=content;
-        this.image=image;
-        this.score=score;
+    public Record(String foodId, String image, String content, float score, AppUser appUser) {
+        this.foodId = foodId; // foodId 초기화 추가
+        this.content = content;
+        this.image = image;
+        this.score = score;
         this.appUser = appUser;
     }
 
@@ -54,9 +53,9 @@ public class Record {
         this.recordDate = LocalDateTime.now();
     }
 
-    public void update(String image, String content,float score){
-        this.content=content;
-        this.image=image;
-        this.score=score;
+    public void update(String image, String content, float score) {
+        this.content = content;
+        this.image = image;
+        this.score = score;
     }
 }
