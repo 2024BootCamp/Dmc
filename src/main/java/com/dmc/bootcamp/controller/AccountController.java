@@ -79,6 +79,8 @@ public class AccountController {
         appUser.setUserId(registerDto.getUserId());
         appUser.setPassword(bCrypt.encode(registerDto.getPassword()));
         appUser.setUserName(registerDto.getUserName());
+        appUser.setDiseaseInfo(registerDto.getDiseaseInfo());
+
         appUser.setRole("client");
 
         //사용자 존재성 확인

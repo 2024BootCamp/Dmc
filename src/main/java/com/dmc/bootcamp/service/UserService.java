@@ -22,13 +22,15 @@ public class UserService {
     }
 
     public AppUser findById(String userId){
-        return userRepository.findById(userId).orElseThrow(()-> new IllegalArgumentException("not found"+userId));
+        return userRepository.findUserByUserId(userId);
     }
 
     public void  delete(String userId){
         AppUser appUser = userRepository.findById(userId).orElseThrow(()-> new IllegalArgumentException("not found"+ userId));
         userRepository.delete(appUser);
     }
+
+
 
 
 }
