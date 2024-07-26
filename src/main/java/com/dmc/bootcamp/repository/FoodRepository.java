@@ -24,4 +24,7 @@ public interface FoodRepository extends JpaRepository<Food,String > {
     //반찬 검색 찜, 구이류
     @Query(value = "SELECT * FROM food_data WHERE (food_id LIKE 'D108%' OR food_id LIKE 'D308%' OR food_id LIKE 'D408%' OR food_id LIKE 'D508%' OR food_id LIKE 'D608%' OR food_id LIKE 'D107%' OR food_id LIKE 'D307%' OR food_id LIKE 'D407%' OR food_id LIKE 'D507%' OR food_id LIKE 'D607%' OR food_id LIKE 'D707%') AND sodium <= 200.0 AND sugar <= 0.5 ORDER BY RAND() LIMIT 1", nativeQuery = true)
     Optional<Food> findRandomJjimGuiByNutrients();
+
+    // 음식 이름으로 음식 정보를 찾기
+    Food findFoodByFoodName(String foodName);
 }

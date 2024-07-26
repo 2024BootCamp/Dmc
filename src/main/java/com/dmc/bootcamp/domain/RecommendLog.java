@@ -23,7 +23,7 @@ public class RecommendLog {
     private LocalDateTime recomTime;
 
     @ManyToMany
-    @JoinTable(name = "recom_food",joinColumns = @JoinColumn(name = "recommendId"),
+    @JoinTable(name = "recommendlog_food",joinColumns = @JoinColumn(name = "recommendId"),
     inverseJoinColumns = @JoinColumn(name = "food_id"))
     private List<Food> foods;
 

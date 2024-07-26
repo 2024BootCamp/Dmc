@@ -4,12 +4,13 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import lombok.Setter;
 
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Setter
 @Entity
 @Table(name = "food_data")
 public class Food{
@@ -43,4 +44,6 @@ public class Food{
 
     @ManyToMany(fetch = FetchType.EAGER,mappedBy = "foods")
     private List<RecommendLog> recommendLogs;
+
+
 }
