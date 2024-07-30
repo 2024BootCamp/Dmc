@@ -17,7 +17,7 @@ public class RecordResponse {
         this.recordId = record.getRecordId();
         this.image=record.getImage();
         this.content=record.getContent();
-        this.userId=record.getAppUser().getUserId();
+        this.userId = record.getAppUser() != null ? record.getAppUser().getUserId() : null;
         this.listFoods=record.getListMeal();
     }
 

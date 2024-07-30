@@ -35,7 +35,7 @@ public class Record {
     private AppUser appUser;
 
     @ElementCollection
-    @CollectionTable(name = "meal", joinColumns = @JoinColumn(name = "record_id"))
+    @CollectionTable(name = "record_food", joinColumns = @JoinColumn(name = "record_id"))
     @MapKeyColumn(name = "food_name")
     @Column(name = "quantity")
     private Map<String, Float> listMeal;
@@ -59,6 +59,4 @@ public class Record {
         this.image = image;
     }
 
-    //유저의 맞춘 식단을 추천하고 나서 바로 RecordRepository를 이용하여 record 테이블에 저장
-    //식단 추천 서비스 클라스에서 총합 kcal,sodium,sugar 등을 계산하고 기준을 지정
 }

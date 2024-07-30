@@ -1,17 +1,18 @@
 package com.dmc.bootcamp.dto.request;
 
-import com.dmc.bootcamp.domain.Meal;
+
 import com.dmc.bootcamp.domain.Record;
 import com.dmc.bootcamp.domain.AppUser;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.util.List;
+
 import java.util.Map;
 
 @Getter
-@AllArgsConstructor
+@Setter
 @NoArgsConstructor
 public class RecordRequest {
 

@@ -51,6 +51,9 @@ public class AppUser {
     @OneToMany(mappedBy = "appUser",fetch = FetchType.EAGER)
     private  List<RecommendLog> recommendLogs;
 
+    @OneToMany(mappedBy = "appUser")
+    private List<Record> records;
+
     @Builder
     public AppUser(String userId, String userName, String password, Character gender, LocalDate birthday, String diseaseInfo, float height, float weight, String address){
         this.userId=userId;

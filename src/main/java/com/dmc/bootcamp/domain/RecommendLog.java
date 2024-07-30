@@ -26,7 +26,7 @@ public class RecommendLog {
     private LocalDateTime recomTime;
 
     @ManyToMany
-    @JoinTable(name = "recommendlog_food",joinColumns = @JoinColumn(name = "recommendId"),
+    @JoinTable(name = "recom_food",joinColumns = @JoinColumn(name = "recommendId"),
     inverseJoinColumns = @JoinColumn(name = "food_id"))
     @JsonIgnore // 이 어노테이션으로 인해 foods 필드는 직렬화되지 않음
     private List<Food> foods;
