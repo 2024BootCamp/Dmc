@@ -3,7 +3,6 @@ package com.dmc.bootcamp.service;
 import com.dmc.bootcamp.domain.AppUser;
 import com.dmc.bootcamp.domain.Record;
 import com.dmc.bootcamp.dto.request.RecordRequest;
-import com.dmc.bootcamp.repository.FoodRepository;
 import com.dmc.bootcamp.repository.RecordRepository;
 import com.dmc.bootcamp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,6 @@ public class RecordService {
 
     @Autowired
     private  UserRepository userRepository;
-
-    private   FoodRepository foodRepository;
 
 
     public Record saveRecord(RecordRequest recordRequest){

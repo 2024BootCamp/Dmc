@@ -51,7 +51,7 @@ public class AppUser {
     @OneToMany(mappedBy = "appUser",fetch = FetchType.EAGER)
     private  List<RecommendLog> recommendLogs;
 
-    @OneToMany(mappedBy = "appUser")
+    @OneToMany(mappedBy = "appUser",fetch = FetchType.LAZY)
     private List<Record> records;
 
     @Builder
