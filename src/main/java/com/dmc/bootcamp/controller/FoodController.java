@@ -17,6 +17,7 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import org.springframework.web.bind.annotation.GetMapping;
 
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -54,6 +55,15 @@ public class FoodController {
         recommendLogService.saveRecommendationLog(userId, recommendedFoods);
 
         return ResponseEntity.ok().body(list);
+    }
+
+    @GetMapping("/recommend/{recommendId}")
+    public ResponseEntity<List<Food>> getFoodsByRecommendId(@PathVariable Long recommendId) {
+        List<Food> foods = foodService.getFoodsByRecommendId(recommendId);
+        if (foods.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(foods);
     }
 
 
