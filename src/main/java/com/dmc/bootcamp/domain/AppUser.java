@@ -51,11 +51,7 @@ public class AppUser {
     @OneToMany(mappedBy = "appUser",fetch = FetchType.EAGER)
     private  List<RecommendLog> recommendLogs;
 
-<<<<<<< HEAD
     @OneToMany(mappedBy = "appUser",fetch = FetchType.EAGER)
-=======
-    @OneToMany(mappedBy = "appUser")
->>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
     private List<Record> records;
 
     @Builder

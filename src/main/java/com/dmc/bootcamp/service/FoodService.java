@@ -54,30 +54,6 @@ public class FoodService {
         return recommendedMeal;
     }
 
-<<<<<<< HEAD
-=======
-//    public FoodDTO findFoodById(String foodId) {
-//        Optional<Food> food = foodRepository.findById(foodId);
-//        if (food.isPresent()) {
-//            return convertToDTO(food.get());
-//        }
-//        throw new RuntimeException("Food not found with ID: " + foodId);
-//    }
-//
-//    private FoodDTO convertToDTO(Food food) {
-//        FoodDTO dto = new FoodDTO();
-//        dto.setFoodId(food.getFoodId());
-//        dto.setFoodName(food.getFoodName());
-//        dto.setServingSize(food.getServingSize());
-//        dto.setCalories(food.getCalories());
-//        dto.setCarbohydrate(food.getCarbohydrate());
-//        dto.setProtein(food.getProtein());
-//        dto.setFat(food.getFat());
-//        dto.setSodium(food.getSodium());
-//        dto.setSugar(food.getSugar());
-//        return dto;
-//    }
->>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
 
     //반찬 추천
     public Food getBanchan(){
@@ -150,13 +126,10 @@ public class FoodService {
         }
         return meal;
     }
-<<<<<<< HEAD
 
     public List<Food> getFoodsByRecommendId(Long recommendId) {
         return foodRepository.findFoodsByRecommendId(recommendId);
     }
 
 
-=======
->>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
 }

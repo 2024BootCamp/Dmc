@@ -42,20 +42,12 @@ public class HealthStatus {
     private float fullSugar;
 
     @Builder
-<<<<<<< HEAD
     public HealthStatus(float highBlood,float lowBlood,float emptySugar,float fullSugar,AppUser user){
-=======
-    public HealthStatus(float highBlood, float lowBlood, float emptySugar, float fullSugar, AppUser appUser){
->>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
         this.highBlood=highBlood;
         this.lowBlood=lowBlood;
         this.emptySugar=emptySugar;
         this.fullSugar=fullSugar;
-<<<<<<< HEAD
         this.appUser=user;
-=======
-        this.appUser = appUser;
->>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
     }
 
     @PrePersist
