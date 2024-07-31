@@ -3,10 +3,18 @@ spring:
   datasource:
     url : jdbc:mysql://localhost:3306/dmc
     username: root
+<<<<<<< HEAD
     password: rosemary135
+=======
+    password: 1234
+>>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL8Dialect
+<<<<<<< HEAD
     open-in-view: false
+=======
+    open-in-view: false
+>>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608

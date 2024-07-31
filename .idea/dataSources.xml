@@ -13,6 +13,7 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+<<<<<<< HEAD
     <data-source source="LOCAL" name="dmcc@localhost" uuid="93ecc1ea-c9fe-4aeb-a039-bb8e7e8ea876">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
@@ -27,5 +28,7 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+=======
+>>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
   </component>
 </project>

@@ -29,8 +29,8 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf(csrf-> csrf.disable())
-                .authorizeHttpRequests(auth-> auth
+        return http.csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/store/**").permitAll()
                         .requestMatchers("/account").permitAll()
@@ -38,24 +38,24 @@ public class SecurityConfig {
                         .requestMatchers("/account/register").permitAll()
                         .anyRequest().authenticated()
                 )
-                .oauth2ResourceServer(oauth2->oauth2.jwt(Customizer.withDefaults()))
-                .sessionManagement(session->session.sessionCreationPolicy(
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
+                .sessionManagement(session -> session.sessionCreationPolicy(
                         SessionCreationPolicy.STATELESS
                 )).build();
     }
 
     @Bean
     public JwtDecoder jwtDecoder() {
-        var secretKey =  new SecretKeySpec(jwtsecretKey.getBytes(),"");
+        var secretKey = new SecretKeySpec(jwtsecretKey.getBytes(), "");
         return NimbusJwtDecoder.withSecretKey(secretKey).macAlgorithm(MacAlgorithm.HS256).build();
     }
 
     @Bean
-    public AuthenticationManager authenticationManager( SecurityUserService appUserService){
+    public AuthenticationManager authenticationManager(SecurityUserService appUserService) {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(appUserService);
         daoAuthenticationProvider.setPasswordEncoder(new BCryptPasswordEncoder());
 
-        return  new ProviderManager(daoAuthenticationProvider);
+        return new ProviderManager(daoAuthenticationProvider);
     }
 }

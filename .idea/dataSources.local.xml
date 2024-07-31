@@ -15,6 +15,7 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+<<<<<<< HEAD
     <data-source name="dmcc@localhost" uuid="93ecc1ea-c9fe-4aeb-a039-bb8e7e8ea876">
       <database-info product="MySQL" version="9.0.0" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-j-8.2.0 (Revision: 06a1f724497fd81c6a659131fda822c9e5085b6c)" dbms="MYSQL" exact-version="9.0.0" exact-driver-version="8.2">
         <extra-name-characters>#@</extra-name-characters>
@@ -28,5 +29,7 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+=======
+>>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
   </component>
 </project>

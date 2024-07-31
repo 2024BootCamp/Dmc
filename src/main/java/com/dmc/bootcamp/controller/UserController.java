@@ -19,9 +19,15 @@ public class UserController {
 
     @PostMapping("/user")
     public ResponseEntity<AppUser> addUser(@RequestBody UserRequest request){
+<<<<<<< HEAD
         AppUser savedUser= userService.save(request);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
+=======
+        AppUser savedAppUser = userService.save(request);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedAppUser);
+>>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
     }
 
     @GetMapping("/user")
@@ -32,8 +38,13 @@ public class UserController {
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<UserResponse> findUser(@PathVariable String userId){
+<<<<<<< HEAD
         AppUser user= userService.findById(userId);
         return ResponseEntity.ok().body(new UserResponse(user));
+=======
+        AppUser appUser = userService.findById(userId);
+        return ResponseEntity.ok().body(new UserResponse(appUser));
+>>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
     }
 
     @DeleteMapping("/user/{userId}")
