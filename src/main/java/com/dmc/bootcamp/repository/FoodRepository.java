@@ -50,7 +50,13 @@ public interface FoodRepository extends JpaRepository<Food,String > {
 //    List<Food> findFoodsByRecommendId(@Param("recommendId") Long recommendId);
 
     //추천 식단 조회를 위한 리포지토리 메서드 추가
-    @Query("SELECT rf.food FROM RecomFood rf WHERE rf.recommendLog.recommendId = :recommendId")
+    @Query(value = "SELECT rf.food FROM RecomFood rf WHERE rf.recommendLog.recommendId = :recommendId",nativeQuery = true)
     List<Food> findFoodsByRecommendId(@Param("recommendId") Long recommendId);
 
+    //Food findFoodByFoodName(String foodName);
+
+
+    //음식 찾지 수량 제한
+    @Query(value = "select * from food_data where food_data.food_name = :foodName limit 1;",nativeQuery = true)
+    Food findFoodByFoodName(@Param("foodName") String foodName);
 }

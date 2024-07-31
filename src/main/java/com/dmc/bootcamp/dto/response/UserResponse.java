@@ -17,15 +17,15 @@ public class UserResponse {
     private float weight;
     private  String address;
 
-    public UserResponse(AppUser appUser){
-        this.userId= appUser.getUserId();
-        this.userName= appUser.getUserName();
-        this.password= appUser.getPassword();
-        this.gender= appUser.getGender();
-        this.birthday= appUser.getBirthday();
-        this.diseaseInfo= appUser.getDiseaseInfo();
-        this.height= appUser.getHeight();
-        this.weight= appUser.getWeight();
-        this.address= appUser.getAddress();
+    public UserResponse(AppUser user){
+        this.userId=user.getUserId();
+        this.userName=user.getUserName();
+        this.password=user.getPassword();
+        this.gender=user.getGender();
+        this.birthday=user.getBirthday();
+        this.diseaseInfo=user.getDiseaseInfo();
+        this.height=user.getHeight();
+        this.weight=user.getWeight();
+        this.address=user.getAddress();
     }
 }

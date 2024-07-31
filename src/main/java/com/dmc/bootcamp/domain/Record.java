@@ -34,6 +34,9 @@ public class Record {
     @JsonBackReference
     private AppUser appUser;
 
+    @Column(name = "score",nullable = true)
+    private Float score;
+
     @ElementCollection
     @CollectionTable(name = "record_food", joinColumns = @JoinColumn(name = "record_id"))
     @MapKeyColumn(name = "food_name")
@@ -59,4 +62,8 @@ public class Record {
         this.image = image;
     }
 
+    public void update(long id ,float score) {
+        this.recordId=id;
+        this.score=score;
+    }
 }

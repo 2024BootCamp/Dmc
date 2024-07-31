@@ -130,4 +130,6 @@ public class FoodService {
     public List<Food> getFoodsByRecommendId(Long recommendId) {
         return foodRepository.findFoodsByRecommendId(recommendId);
     }
+
+
 }

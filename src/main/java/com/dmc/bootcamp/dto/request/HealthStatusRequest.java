@@ -1,5 +1,6 @@
 package com.dmc.bootcamp.dto.request;
 
+import com.dmc.bootcamp.domain.AppUser;
 import com.dmc.bootcamp.domain.HealthStatus;
 import com.dmc.bootcamp.domain.AppUser;
 import lombok.AllArgsConstructor;
@@ -17,13 +18,13 @@ public class HealthStatusRequest {
     private float fullSugar;
     private String userId;
 
-    public HealthStatus toEntity(AppUser appUser){
+    public HealthStatus toEntity(AppUser user){
         return HealthStatus.builder()
                 .highBlood(highBlood)
                 .lowBlood(lowBlood)
                 .emptySugar(emptySugar)
                 .fullSugar(fullSugar)
-                .appUser(appUser)
+                .user(user)
                 .build();
 
     }
