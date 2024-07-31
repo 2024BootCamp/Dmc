@@ -13,6 +13,6 @@ import java.util.Map;
 public class RecommendCountFood {
 
     private List<FoodResponse> foodResponseList;
-    private Map<String,Float> mapFood;
+//    private Map<String,Float> mapFood;
 
 }

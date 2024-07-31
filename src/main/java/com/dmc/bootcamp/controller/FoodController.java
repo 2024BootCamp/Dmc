@@ -72,7 +72,7 @@ public class FoodController {
         map.put("sugar",sugar);
 
         recommendLogService.saveRecommendationLog(userId, recommendedFoods);
-        RecommendCountFood recommendCountFood= new RecommendCountFood(list,map);
+        RecommendCountFood recommendCountFood= new RecommendCountFood(list);
 
         return ResponseEntity.ok().body(recommendCountFood);
     }
