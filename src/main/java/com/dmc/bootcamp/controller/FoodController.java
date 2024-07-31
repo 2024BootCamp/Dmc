@@ -4,6 +4,7 @@ import com.dmc.bootcamp.domain.AppUser;
 import com.dmc.bootcamp.domain.Food;
 
 import com.dmc.bootcamp.dto.response.FoodResponse;
+import com.dmc.bootcamp.dto.response.RecommendCountFood;
 import com.dmc.bootcamp.service.FoodService;
 import com.dmc.bootcamp.service.RecommendLogService;
 import com.dmc.bootcamp.service.UserService;
@@ -21,8 +22,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //쿼리추가
 
@@ -40,7 +42,7 @@ public class FoodController {
     private final UserService userService;
     private final RecommendLogService recommendLogService;
     @GetMapping("/recommend-meal")
-    public ResponseEntity<List<FoodResponse>> recommendMeal() {
+    public ResponseEntity<RecommendCountFood> recommendMeal() {
 
         JwtAuthenticationToken auth = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         String userId = auth.getName(); // 인증된 사용자의 ID
@@ -52,9 +54,27 @@ public class FoodController {
         List<FoodResponse> list = foodService.getMeal(userId).stream().map(FoodResponse::new).toList();
 
         List<Food> recommendedFoods = foodService.getMeal(userId);
-        recommendLogService.saveRecommendationLog(userId, recommendedFoods);
 
-        return ResponseEntity.ok().body(list);
+
+        //총합 kcal,sodium,sugar
+
+        float kcal= 0;
+        float sodium= 0;
+        float sugar=0;
+        for(Food food : recommendedFoods) {
+            kcal+= food.getCalories();
+            sodium+= food.getSodium();
+            sugar+= food.getSugar();
+        }
+        Map<String,Float> map = new HashMap<>();
+        map.put("kcal",kcal);
+        map.put("sodium",sodium);
+        map.put("sugar",sugar);
+
+        recommendLogService.saveRecommendationLog(userId, recommendedFoods);
+        RecommendCountFood recommendCountFood= new RecommendCountFood(list);
+
+        return ResponseEntity.ok().body(recommendCountFood);
     }
 
     @GetMapping("/recommend/{recommendId}")

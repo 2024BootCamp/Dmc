@@ -57,7 +57,7 @@ public class FoodRatingService {
         double sodiumScore = getSodium(recordId);
         double sugarScore = getSugar(recordId);
         double kcalCompare = personalKcal - kcalScore;
-        float totalScore = 0;
+        float totalScore = 1;
 
         if (-100 < kcalCompare && kcalCompare < 100)
             kcalScore = 33;
