@@ -7,7 +7,10 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class FoodResponse {
+<<<<<<< HEAD
+=======
     private String foodId;
+>>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
     private String foodName;
     private float calories;
     private float carbohydrate;
@@ -17,7 +20,10 @@ public class FoodResponse {
     private float sugar;
 
     public FoodResponse(Food food){
+<<<<<<< HEAD
+=======
         this.foodId=food.getFoodId();
+>>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
         this.foodName=food.getFoodName();
          this.calories=food.getCalories();
          this.carbohydrate=food.getCarbohydrate();

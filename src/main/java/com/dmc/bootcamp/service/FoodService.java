@@ -54,6 +54,8 @@ public class FoodService {
         return recommendedMeal;
     }
 
+<<<<<<< HEAD
+=======
 //    public FoodDTO findFoodById(String foodId) {
 //        Optional<Food> food = foodRepository.findById(foodId);
 //        if (food.isPresent()) {
@@ -75,6 +77,7 @@ public class FoodService {
 //        dto.setSugar(food.getSugar());
 //        return dto;
 //    }
+>>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
 
     //반찬 추천
     public Food getBanchan(){
@@ -147,4 +150,13 @@ public class FoodService {
         }
         return meal;
     }
+<<<<<<< HEAD
+
+    public List<Food> getFoodsByRecommendId(Long recommendId) {
+        return foodRepository.findFoodsByRecommendId(recommendId);
+    }
+
+
+=======
+>>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
 }

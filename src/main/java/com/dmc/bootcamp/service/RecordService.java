@@ -3,9 +3,15 @@ package com.dmc.bootcamp.service;
 import com.dmc.bootcamp.domain.AppUser;
 import com.dmc.bootcamp.domain.Record;
 import com.dmc.bootcamp.dto.request.RecordRequest;
+<<<<<<< HEAD
+import com.dmc.bootcamp.repository.RecordRepository;
+import com.dmc.bootcamp.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+=======
 import com.dmc.bootcamp.repository.FoodRepository;
 import com.dmc.bootcamp.repository.RecordRepository;
 import com.dmc.bootcamp.repository.UserRepository;
+>>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +19,16 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+<<<<<<< HEAD
+@RequiredArgsConstructor
+public class RecordService {
+
+    @Autowired
+    private final RecordRepository recordRepository;
+
+    @Autowired
+    private final UserRepository userRepository;
+=======
 
 public class RecordService {
 
@@ -23,6 +39,7 @@ public class RecordService {
     private  UserRepository userRepository;
 
     private   FoodRepository foodRepository;
+>>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
 
 
     public Record saveRecord(RecordRequest recordRequest){
@@ -54,6 +71,17 @@ public class RecordService {
         return  record;
     }
 
+<<<<<<< HEAD
+    public List<Record> findRecordByUserId(String userId){
+        AppUser user= userRepository.findUserByUserId(userId);
+        if (user==null){
+            throw new IllegalArgumentException("User not found");
+        }
+        return recordRepository.findRecordByAppUser(user);
+    }
+
+=======
+>>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
     public void deleteRecord(long id) {
         recordRepository.deleteById(id);
     }
