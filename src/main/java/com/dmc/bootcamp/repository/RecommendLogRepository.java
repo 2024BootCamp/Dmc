@@ -2,7 +2,6 @@ package com.dmc.bootcamp.repository;
 
 import com.dmc.bootcamp.domain.RecommendLog;
 import org.springframework.data.jpa.repository.JpaRepository;
-<<<<<<< HEAD
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -14,8 +13,4 @@ public interface RecommendLogRepository extends JpaRepository<RecommendLog,Long>
    //추천 로그 날짜 조회를 위한 리포지토리 메서드 추가
    @Query("SELECT r FROM RecommendLog r WHERE DATE(r.recomTime) = :date")
    List<RecommendLog> findByDate(@Param("date") LocalDate date);
-=======
-
-public interface RecommendLogRepository extends JpaRepository<RecommendLog,Long> {
->>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
 }

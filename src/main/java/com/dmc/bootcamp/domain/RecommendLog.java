@@ -3,14 +3,9 @@ package com.dmc.bootcamp.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-<<<<<<< HEAD
 import lombok.*;
-=======
-import lombok.AccessLevel;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
->>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
@@ -19,10 +14,7 @@ import java.util.List;
 @Entity
 @Table(name = "recommend_log")
 @Setter
-<<<<<<< HEAD
 @Getter
-=======
->>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
 @EntityListeners(AuditingEntityListener.class)
 public class RecommendLog {
 
@@ -34,16 +26,7 @@ public class RecommendLog {
     private LocalDateTime recomTime;
 
     @ManyToMany
-<<<<<<< HEAD
-    @JoinTable(
-            name = "recom_food",
-            joinColumns = @JoinColumn(name = "recommend_id"),
-            inverseJoinColumns = @JoinColumn(name = "food_id")
-    )
-=======
-    @JoinTable(name = "recom_food",joinColumns = @JoinColumn(name = "recommendId"),
-    inverseJoinColumns = @JoinColumn(name = "food_id"))
->>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
+    @JoinTable(name = "recom_food", joinColumns = @JoinColumn(name = "recommend_id"), inverseJoinColumns = @JoinColumn(name = "food_id"))
     @JsonIgnore // 이 어노테이션으로 인해 foods 필드는 직렬화되지 않음
     private List<Food> foods;
 

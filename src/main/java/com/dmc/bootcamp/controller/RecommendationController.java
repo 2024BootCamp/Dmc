@@ -1,6 +1,5 @@
 package com.dmc.bootcamp.controller;
 
-<<<<<<< HEAD
 import com.dmc.bootcamp.domain.Food;
 import com.dmc.bootcamp.dto.response.FoodResponse;
 import com.dmc.bootcamp.service.RecommendLogService;
@@ -14,7 +13,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
-=======
 import com.dmc.bootcamp.domain.AppUser;
 import com.dmc.bootcamp.dto.FoodDTO;
 
@@ -29,7 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;
->>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
 
 @RestController
 @RequestMapping("/recommend")
@@ -37,7 +34,6 @@ public class RecommendationController {
     @Autowired
     private RecommendLogService recommendLogService;
 
-<<<<<<< HEAD
     //날짜로 그 날 추천식단 조회
     //http://localhost:8081/recommend/by-date?date=2024-07-30 예시 url
     @GetMapping("/by-date")
@@ -48,11 +44,6 @@ public class RecommendationController {
                 .map(FoodResponse::new)
                 .collect(Collectors.toList());
     }
-=======
     @Autowired
     private UserService pserService; // 필요 시
-
-
-
->>>>>>> 235a33fcc00776f3ec31e1eb0513a0160fbc4608
 }

@@ -3,7 +3,7 @@ package com.dmc.bootcamp.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "recom_food", schema = "dmcc")
+@Table(name = "recom_food", schema = "dmc")
 public class RecomFood {
 
     @Id
