@@ -30,6 +30,10 @@ public class HealthStatusService {
         return healthStatusRepository.findAll();
     }
 
+    public  List<HealthStatus> getALlStatusByUserId(String userId){
+        return healthStatusRepository.findHealthStatusByUserId(userId);
+    }
+
     //사용자 건강 상태 기록 삭제
     public void delete(long id){
         HealthStatus healthStatus= healthStatusRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("not found"+id));
