@@ -18,7 +18,7 @@ public class RecordRequest {
 
     private String image;
     private String content;
-    private String userId;
+  //  private String userId;
     private Map<String, Float> listMeal;
 
 

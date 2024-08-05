@@ -1,8 +1,6 @@
 package com.dmc.bootcamp.controller;
 
-import com.dmc.bootcamp.domain.Food;
-import com.dmc.bootcamp.dto.request.RecommendLogRequest;
-import com.dmc.bootcamp.dto.response.FoodResponse;
+
 import com.dmc.bootcamp.dto.response.RecommendCountFood;
 import com.dmc.bootcamp.service.RecommendLogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/recommend")

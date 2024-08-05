@@ -131,5 +131,11 @@ public class FoodService {
         return foodRepository.findFoodsByRecommendId(recommendId);
     }
 
+    //자동완성
+    public List<String> getAutocompleteSuggestions(String query) {
+        return foodRepository.findFoodNamesByQuery(query);
+    }
+
+
 
 }

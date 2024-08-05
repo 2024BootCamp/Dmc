@@ -4,12 +4,13 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
+@Builder
 @Entity
 @Table(name = "user")
 public class AppUser {
@@ -33,10 +34,10 @@ public class AppUser {
     private String diseaseInfo;
 
     @Column(name = "height")
-    private float height;
+    private Double height;
 
     @Column(name = "weight")
-    private float weight;
+    private Double weight;
 
     @Column(name = "address")
     private String address;
@@ -44,29 +45,19 @@ public class AppUser {
     @Column(name = "role")
     private String role;
 
-    @OneToMany(mappedBy = "appUser",fetch = FetchType.EAGER)
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @OneToMany(mappedBy = "appUser", fetch = FetchType.LAZY)
     private List<HealthStatus> healthStatuses;
 
+    @OneToMany(mappedBy = "appUser", fetch = FetchType.LAZY)
+    private List<RecommendLog> recommendLogs;
 
-    @OneToMany(mappedBy = "appUser",fetch = FetchType.EAGER)
-    private  List<RecommendLog> recommendLogs;
-
-    @OneToMany(mappedBy = "appUser",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "appUser", fetch = FetchType.LAZY)
     private List<Record> records;
-
-    @Builder
-    public AppUser(String userId, String userName, String password, Character gender, LocalDate birthday, String diseaseInfo, float height, float weight, String address){
-        this.userId=userId;
-        this.password=password;
-        this.userName=userName;
-        this.gender=gender;
-        this.birthday=birthday;
-        this.diseaseInfo=diseaseInfo;
-        this.height=height;
-        this.weight=weight;
-        this.address=address;
-    }
-
-
-
 }
+

@@ -80,6 +80,13 @@ public class AccountController {
         appUser.setPassword(bCrypt.encode(registerDto.getPassword()));
         appUser.setUserName(registerDto.getUserName());
         appUser.setDiseaseInfo(registerDto.getDiseaseInfo());
+        appUser.setEmail(registerDto.getEmail());
+        appUser.setPhone(registerDto.getPhone());
+        appUser.setGender(registerDto.getGender());
+        appUser.setBirthday(registerDto.getBirthday());
+        appUser.setAddress(registerDto.getAddress());
+        appUser.setHeight(registerDto.getHeight());
+        appUser.setWeight(registerDto.getWeight());
 
         appUser.setRole("client");
 

@@ -13,8 +13,8 @@ public class UserResponse {
     private Character gender;
     private LocalDate birthday;
     private String diseaseInfo;
-    private float height;
-    private float weight;
+    private Double height;
+    private Double weight;
     private  String address;
 
     public UserResponse(AppUser user){

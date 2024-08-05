@@ -34,6 +34,7 @@ public class FoodRatingService {
                 .orElseThrow(() -> new IllegalArgumentException("Rating not found"));
     }
 
+    //유저의 정보에 따라 한끼당 kcal 계산
     public float getAverageKcal(String userId) {
         AppUser user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
@@ -51,6 +52,7 @@ public class FoodRatingService {
         return (float) averageKcal / 3;
     }
 
+    //kcal, sodium, sugar의 치수에 따라 식단 평가 점수를 계산
     public float rating(long recordId, String userId) {
         double personalKcal = getAverageKcal(userId);
         double kcalScore = getKcal(recordId);
@@ -99,6 +101,7 @@ public class FoodRatingService {
         return Math.max(0, Math.min(score / 20.0, 5));
     }
 
+    //기록했던 식단에 따라 총합 sodium 계산
     private float getSodium(long recordId) {
         Record record = recordRepository.findById(recordId)
                 .orElseThrow(() -> new IllegalArgumentException("Record not found"));
@@ -112,6 +115,7 @@ public class FoodRatingService {
         return sodium;
     }
 
+    //기록했던 식단 정보에 따라 총합 sugar를 게산
     private float getSugar(long recordId) {
         Record record = recordRepository.findById(recordId)
                 .orElseThrow(() -> new IllegalArgumentException("Record not found"));
@@ -125,6 +129,7 @@ public class FoodRatingService {
         return sugar;
     }
 
+    // 기록했던 식단 정보에 따라 총합 kcal를 계산
     private float getKcal(long recordId) {
         Record record = recordRepository.findById(recordId)
                 .orElseThrow(() -> new IllegalArgumentException("Record not found"));

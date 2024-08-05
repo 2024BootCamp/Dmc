@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class UserController {
+    //관리자 사용하는 기능들
 
     private final UserService userService;
 

@@ -24,8 +24,8 @@ public class RecordService {
     private final UserRepository userRepository;
 
 
-    public Record saveRecord(RecordRequest recordRequest){
-        AppUser user= userRepository.findUserByUserId(recordRequest.getUserId());
+    public Record saveRecord(String userId,RecordRequest recordRequest){
+        AppUser user= userRepository.findUserByUserId(userId);
         if (user == null) {
             throw new IllegalArgumentException("User not found");
         }
@@ -66,8 +66,19 @@ public class RecordService {
         Record record = recordRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Record not found"));
         record.update(id,request.getScore());
     }
+
+
     public void deleteRecord(long id) {
         recordRepository.deleteById(id);
+    }
+
+
+    public List<Record> getRecordsByUserId(String userId){
+        AppUser user= userRepository.findUserByUserId(userId);
+        if (user==null){
+            throw new IllegalArgumentException("User not found");
+        }
+        return recordRepository.findRecordsByUserId(userId);
     }
 
 }

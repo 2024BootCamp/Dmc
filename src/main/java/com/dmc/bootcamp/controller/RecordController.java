@@ -24,39 +24,77 @@ import java.util.stream.Collectors;
 public class RecordController {
 
     @Autowired
-    private  final  UserService userService;
+    private final UserService userService;
 
     @Autowired
-    private final  RecordService recordService;
+    private final RecordService recordService;
 
 
-    @PostMapping("/addRecord")
-    public ResponseEntity<Record> addRecord(@RequestBody RecordRequest request){
-        Record record = recordService.saveRecord(request);
-        return  ResponseEntity.ok().body(record);
-    }
-
-    @GetMapping("/getAllRecord")
-    public ResponseEntity<List<RecordResponse>> getAll(){
-        List<RecordResponse> list = recordService.getAllRecords().stream()
-                .map(RecordResponse::new)
-                .collect(Collectors.toList());
-        return  ResponseEntity.ok().body(list);
-    }
-
-    @GetMapping("/getDetail/{recordId}")
-    public ResponseEntity<RecordResponse>  getDetail(@PathVariable Long recordId){
+    @PostMapping("/addRecord") // 식단 기록 추가
+    public ResponseEntity<Record> addRecord(@RequestBody RecordRequest request) {
         JwtAuthenticationToken auth = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         String userId = auth.getName(); // 인증된 사용자의 ID
-        AppUser user= userService.findById(userId);
+        AppUser user = userService.findById(userId);
 
         if (userId == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
-        Record record=recordService.getRecordById(recordId);
-        RecordResponse response= new RecordResponse(record);
-        return  ResponseEntity.ok().body(response);
+        Record record = recordService.saveRecord(userId,request);
+        return ResponseEntity.ok().body(record);
     }
 
+    @GetMapping("/getAllRecord") //식단 기록 리스트를 모두 조회
+    public ResponseEntity<List<RecordResponse>> getAll() {
+        List<RecordResponse> list = recordService.getAllRecords().stream()
+                .map(RecordResponse::new)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok().body(list);
+    }
+
+    //유저 Id에 따라 식단 기록 리스트를 얻어내기
+    @GetMapping("/getAllRecordByUserId")
+    public ResponseEntity<List<RecordResponse>> getAllRecordByUserId() {
+        JwtAuthenticationToken auth = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        String userId = auth.getName(); // 인증된 사용자의 ID
+        AppUser user = userService.findById(userId);
+
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+        List<RecordResponse> list= recordService.getRecordsByUserId(userId).stream().map(RecordResponse:: new).toList();
+        return ResponseEntity.ok().body(list);
+    }
+
+    @GetMapping("/getDetail/{recordId}") //식단 기록의 Id에 따라 조회
+    public ResponseEntity<RecordResponse> getDetail(@PathVariable Long recordId) {
+        JwtAuthenticationToken auth = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        String userId = auth.getName(); // 인증된 사용자의 ID
+        AppUser user = userService.findById(userId);
+
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+        Record record = recordService.getRecordById(recordId);
+        RecordResponse response = new RecordResponse(record);
+        return ResponseEntity.ok().body(response);
+    }
+
+    //식단 기록 수정
+    @PutMapping("/putRecord/{recordId}")
+    public ResponseEntity<Record> putRecord(@PathVariable Long recordId, @RequestBody RecordRequest request) {
+        Record record = recordService.getRecordById(recordId);
+        if (record == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+        return ResponseEntity.ok().body(null);
+    }
+
+    //식단 기록을 삭제
+    @DeleteMapping("/deleteRecord/{recordId}")
+    public ResponseEntity<Void> deleteRecord(@PathVariable Long recordId) {
+        recordService.deleteRecord(recordId);
+        return ResponseEntity.ok().body(null);
+    }
 
 }
+

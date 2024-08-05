@@ -57,7 +57,8 @@ public class Record {
         this.recordDate = LocalDateTime.now();
     }
 
-    public void update(String image, String content) {
+    public void update(String image, String content,Map<String, Float> listMeal) {
+        this.listMeal=listMeal;
         this.content = content;
         this.image = image;
     }

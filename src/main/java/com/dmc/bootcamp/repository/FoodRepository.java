@@ -12,6 +12,10 @@ import java.util.Optional;
 
 public interface FoodRepository extends JpaRepository<Food,String > {
 
+    //자동완성
+    @Query("SELECT f.foodName FROM Food f WHERE f.foodName LIKE %:query%")
+    List<String> findFoodNamesByQuery(@Param("query") String query);
+
     //밥 종류 검색
     @Query(value = "SELECT * FROM food_data WHERE (food_id LIKE 'D101%' OR food_id LIKE 'D301%' OR food_id LIKE 'D401%' OR food_id LIKE 'D501%' OR food_id LIKE 'D601%' OR food_id LIKE 'D701%') ORDER BY RAND() LIMIT 1", nativeQuery = true)
     Optional<Food> findRandomFoodByPrefixesAndNutrients();

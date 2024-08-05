@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -84,6 +85,11 @@ public class FoodController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(foods);
+    }
+    //자동완성
+    @GetMapping("/api/foods/autocomplete")
+    public List<String> autocomplete(@RequestParam String query) {
+        return foodService.getAutocompleteSuggestions(query);
     }
 
 
