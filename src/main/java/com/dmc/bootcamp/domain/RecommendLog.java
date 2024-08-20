@@ -39,7 +39,7 @@ public class RecommendLog {
 
 
     @Column(name = "like_status")
-    private boolean likeStatus;
+    private Boolean likeStatus;
 
     public RecommendLog(){};
 

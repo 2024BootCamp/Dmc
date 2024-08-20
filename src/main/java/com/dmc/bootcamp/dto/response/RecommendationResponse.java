@@ -5,6 +5,7 @@ import com.dmc.bootcamp.dto.FoodDTO;
 import java.util.List;
 
 public class RecommendationResponse {
+
     private FoodDTO rice;
     private FoodDTO soup;
     private List<FoodDTO> banchans;

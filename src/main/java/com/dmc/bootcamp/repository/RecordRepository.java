@@ -20,6 +20,8 @@ public interface RecordRepository extends JpaRepository<Record,Long> {
     // 수정된 메서드: LocalDate의 시작과 끝을 사용하여 날짜 범위 검색
     @Query("SELECT r FROM Record r WHERE r.appUser = :user AND r.recordDate BETWEEN :startOfDay AND :endOfDay")
     List<Record> findByAppUserAndRecordDate(@Param("user") AppUser user,
-                                            @Param("startOfDay") LocalDateTime startOfDay,
-                                            @Param("endOfDay") LocalDateTime endOfDay);
+                                                      @Param("startOfDay") LocalDateTime startOfDay,
+                                                      @Param("endOfDay") LocalDateTime endOfDay);
 }
+
+

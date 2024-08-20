@@ -13,4 +13,6 @@ public interface RecommendLogRepository extends JpaRepository<RecommendLog,Long>
    //추천 로그 날짜 조회를 위한 리포지토리 메서드 추가
    @Query("SELECT r FROM RecommendLog r WHERE DATE(r.recomTime) = :date")
    List<RecommendLog> findByDate(@Param("date") LocalDate date);
+
+   RecommendLog findByRecommendId(long id);
 }

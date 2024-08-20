@@ -42,18 +42,16 @@ public class FoodController {
     }
 
     //호불호 컨트롤러
-    @PostMapping("/api/like-meal/{recommendId}")
-    public ResponseEntity<String> likeMeal(@PathVariable Long recommendId, @RequestBody LikeRequest likeRequest) {
-        if (likeRequest.getRecommendId() == null || !likeRequest.getRecommendId().equals(recommendId)) {
-            return ResponseEntity.badRequest().body("Invalid recommend ID in request.");
+    @PostMapping("/api/like-meal")
+    public ResponseEntity<Void> likeMeal( @RequestBody LikeRequest likeRequest) {
+        JwtAuthenticationToken auth = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        String userId = auth.getName();
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
-
-        boolean result = recommendLogService.updateLikeStatus(recommendId, likeRequest.isLike());
-        if (result) {
-            return ResponseEntity.ok("Like status updated successfully.");
-        } else {
-            return ResponseEntity.badRequest().body("Failed to update like status.");
-        }
+      //  long recommendId= Long.parseLong(likeRequest.getRecommendId());
+       recommendLogService.updateLikeStatus(likeRequest.getRecommendId(), likeRequest.getLikeStatus());
+        return  ResponseEntity.ok().build();
     }
 
 

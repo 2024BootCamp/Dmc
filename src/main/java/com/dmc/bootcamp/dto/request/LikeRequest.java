@@ -1,23 +1,11 @@
 package com.dmc.bootcamp.dto.request;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class LikeRequest {
-    private Long recommendId;
-    private boolean likeStatus;
-
-    // Getter and Setter
-    public Long getRecommendId() {
-        return recommendId;
-    }
-
-    public void setRecommendId(Long recommendId) {
-        this.recommendId = recommendId;
-    }
-
-    public boolean isLike() {
-        return likeStatus;
-    }
-
-    public void setLike(boolean like) {
-        this.likeStatus = likeStatus;
-    }
+    private String recommendId;
+    private Boolean likeStatus;
 }

@@ -1,16 +1,14 @@
 package com.dmc.bootcamp.service;
 
 import com.dmc.bootcamp.domain.*;
-import com.dmc.bootcamp.domain.Record;
 import com.dmc.bootcamp.dto.request.FoodRatingRequest;
 import com.dmc.bootcamp.repository.*;
+import com.dmc.bootcamp.domain.Record;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.List;
 import java.util.Map;
 
 @Service
@@ -103,8 +101,7 @@ public class FoodRatingService {
 
     //기록했던 식단에 따라 총합 sodium 계산
     private float getSodium(long recordId) {
-        Record record = recordRepository.findById(recordId)
-                .orElseThrow(() -> new IllegalArgumentException("Record not found"));
+        Record record = recordRepository.findById(recordId).orElseThrow(()-> new  IllegalArgumentException("not found record"));
         Map<String, Float> listFood = record.getListMeal();
         float sodium = 0;
         for (Map.Entry<String, Float> entry : listFood.entrySet()) {
@@ -117,9 +114,8 @@ public class FoodRatingService {
 
     //기록했던 식단 정보에 따라 총합 sugar를 게산
     private float getSugar(long recordId) {
-        Record record = recordRepository.findById(recordId)
-                .orElseThrow(() -> new IllegalArgumentException("Record not found"));
-        Map<String, Float> listFood = record.getListMeal();
+        Record record = recordRepository.findById(recordId).orElseThrow(() -> new IllegalArgumentException("Record not found"));
+        Map<String, Float> listFood = record.getListMeal() ;
         float sugar = 0;
         for (Map.Entry<String, Float> entry : listFood.entrySet()) {
             Food food = foodRepository.findFoodByFoodName(entry.getKey());
