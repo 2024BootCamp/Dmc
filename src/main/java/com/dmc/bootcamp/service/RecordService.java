@@ -3,9 +3,10 @@ package com.dmc.bootcamp.service;
 import com.dmc.bootcamp.domain.AppUser;
 import com.dmc.bootcamp.domain.Record;
 import com.dmc.bootcamp.dto.request.RecordRequest;
-import com.dmc.bootcamp.repository.FoodRepository;
 import com.dmc.bootcamp.repository.RecordRepository;
 import com.dmc.bootcamp.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+import com.dmc.bootcamp.repository.FoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,16 +14,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-
+@RequiredArgsConstructor
 public class RecordService {
 
     @Autowired
-    private RecordRepository recordRepository;
+    private final RecordRepository recordRepository;
 
     @Autowired
-    private  UserRepository userRepository;
+    private final   UserRepository userRepository;
 
-    private   FoodRepository foodRepository;
+    @Autowired
+    private final  FoodRepository foodRepository;
 
 
     public Record saveRecord(RecordRequest recordRequest){
@@ -52,6 +54,13 @@ public class RecordService {
             record.getListMeal().size();
         }
         return  record;
+    }
+    public List<Record> findRecordByUserId(String userId){
+        AppUser user= userRepository.findUserByUserId(userId);
+        if (user==null){
+            throw new IllegalArgumentException("User not found");
+        }
+        return recordRepository.findRecordByAppUser(user);
     }
 
     public void deleteRecord(long id) {

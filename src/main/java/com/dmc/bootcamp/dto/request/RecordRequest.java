@@ -3,7 +3,6 @@ package com.dmc.bootcamp.dto.request;
 
 import com.dmc.bootcamp.domain.Record;
 import com.dmc.bootcamp.domain.AppUser;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

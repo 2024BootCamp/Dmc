@@ -1,17 +1,16 @@
 package com.dmc.bootcamp.dto.request;
 
 import com.dmc.bootcamp.domain.AppUser;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
+
 @Setter
+@Getter
+@NoArgsConstructor
 public class UserRequest {
     private String userId;
     private String password;

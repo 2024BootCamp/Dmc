@@ -18,6 +18,7 @@ public class HealthStatusRequest {
     private String userId;
 
     public HealthStatus toEntity(AppUser appUser){
+
         return HealthStatus.builder()
                 .highBlood(highBlood)
                 .lowBlood(lowBlood)

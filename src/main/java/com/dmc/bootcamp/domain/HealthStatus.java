@@ -47,7 +47,7 @@ public class HealthStatus {
         this.lowBlood=lowBlood;
         this.emptySugar=emptySugar;
         this.fullSugar=fullSugar;
-        this.appUser = appUser;
+        this.appUser=appUser;
     }
 
     @PrePersist
